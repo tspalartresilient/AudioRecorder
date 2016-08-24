@@ -128,14 +128,14 @@ function updateAnalysers(time) {
         //     var offset = Math.floor( i * multiplier );
         //     // gotta sum/average the block, or we miss narrow-bandwidth spikes
         //     for (var j = 0; j< multiplier; j++)
-        //         magnitude += (maxDecibels + minDecibels) / 2;
-        //     magnitude = magnitude / multiplier * 1.4;
+        //         magnitude += freqByteData[offset + j];
+        //     magnitude = magnitude / multiplier;
         //     var magnitude2 = freqByteData[i * multiplier];
         //     analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
-        //     analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, magnitude);
+        //     analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
         // }
 
-        // Draw rectangle for each frequency bin.
+        // Draw a left to right rectangle to show average audio volume.
         for (var i = 0; i < numBars; ++i) {
             var magnitude = 0;
             var offset = Math.floor( i * multiplier );
@@ -145,7 +145,7 @@ function updateAnalysers(time) {
             magnitude = magnitude / multiplier;
             var magnitude2 = freqByteData[i * multiplier];
             analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
-            analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+            analyserContext.fillRect(0, 0, magnitude, canvasHeight);
         }
 
         // // Draw a rectangle for the average frequency.
