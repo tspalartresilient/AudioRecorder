@@ -77,7 +77,7 @@ function exportWAV(type){
   this.postMessage(audioBlob);
 }
 
-// Create a file vased on the previous record in mono sound
+// Create a file based on the previous record in mono sound
 function exportMonoWAV(type){
   var bufferL = mergeBuffers(recBuffersL, recLength);
   var dataview = encodeWAV(bufferL, true);

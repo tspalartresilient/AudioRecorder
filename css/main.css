@@ -1,25 +1,32 @@
 html { overflow: hidden; }
 body {
-  font: 14pt Arial, sans-serif;
-  background: lightgrey;
+  font: 14pt;
+  background: rgba(19,40,50,1);
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
   margin: 0 0;
+  text-align: center;
+  color: white;
 }
 #wavedisplay {
-  display: inline-block;
+  display: none;
   background: #505050;
   width: 95%;
   height: 45%;
-  box-shadow: 0px 0px 10px blue;
 }
 #analyser {
   background: #505050;
-  width: 100%;
-  height: 90%;
-  box-shadow: 0px 0px 10px blue;
+  width: 70%;
+  height: 3%;
+  position: absolute;
+}
+#analyzerhide {
+  z-index: +1;
+  width: 70%;
+  height: 3.1%;
+  position: absolute;
 }
 #controls {
   display: flex;
@@ -29,27 +36,17 @@ body {
   height: 20%;
   width: 100%;
 }
-#record { height: 15vh; }
+#record { height: 10vh; width:10vh; margin: 0 auto 0 auto;}
 #record.recording {
-  background: red;
-  background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
-  background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
-  background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
+  background-image:"img/btn_record_inactive.png";
 }
-#save, #save img { height: 10vh; }
+#save, #save img { height: 3vh;width:3vh; margin: 0 auto 0 auto;}
 #save { opacity: 0.25;}
 #save[download] { opacity: 1;}
-#viz {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
 #volume-analyer {
-  width: 95%;
-  height: 50%;
+  width: 100%;
+  height: 3%;
+  margin-top: 1%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -77,6 +74,19 @@ body {
   opacity: 0.6;
   height: 1px;
   position: relative;
+}
+#chronotime {
+  font-size: 3.5vh;
+}
+#recordtime {
+  font-size: 2.2vh;
+}
+#inputlevel {
+  font-size: 1.5vh;
+}
+#waiting {
+  height: 65%;
+  width: 100%;
 }
 /*@media (orientation: landscape) {
   body { flex-direction: row;}

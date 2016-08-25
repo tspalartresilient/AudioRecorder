@@ -70,6 +70,7 @@ function toggleRecording( e ) {
         audioRecorder.stop();
         e.classList.remove("recording");
         audioRecorder.getBuffers( gotBuffers );
+        document.getElementById("record").src = "/img/btn_record_inactive.png";
     } else {
         // start recording
         if (!audioRecorder)
@@ -77,6 +78,7 @@ function toggleRecording( e ) {
         e.classList.add("recording");
         audioRecorder.clear();
         audioRecorder.record();
+        document.getElementById("record").src = "/img/btn_record_active.png";
     }
 }
 
@@ -142,9 +144,9 @@ function updateAnalysers(time) {
             // gotta sum/average the block, or we miss narrow-bandwidth spikes
             for (var j = 0; j< multiplier; j++)
                 magnitude += freqByteData[offset + j];
-            magnitude = magnitude / multiplier;
+            magnitude = magnitude / multiplier * 5;
             var magnitude2 = freqByteData[i * multiplier];
-            analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
+            analyserContext.fillStyle = "hsl( " + 115 + ", 100%, 100%)";
             analyserContext.fillRect(0, 0, magnitude, canvasHeight);
         }
 

@@ -24,14 +24,15 @@ function showtimer() {
 	if(seconds_passed < 10){
 		seconds_passed = "0" + seconds_passed;
 	}
-	document.timeform.timetextarea.value = hours_passed + ":" + minutes_passed + ":" + seconds_passed;
+	document.getElementById("chronotime").innerHTML = hours_passed + ":" + minutes_passed + ":" + seconds_passed;
+
 	timercount = setTimeout("showtimer()", 1000);
 }
 
 function sw_start(){
 	if(!timercount){
 	timestart   = new Date();
-	document.timeform.timetextarea.value = "00:00:00";
+	document.getElementById("chronotime").innerHTML = "00:00:00";
 	timercount  = setTimeout("showtimer()", 1000);
 	}
 	else{
@@ -82,7 +83,7 @@ function Stop() {
 		else if(milliseconds_passed < 100){
 			milliseconds_passed = "0" + milliseconds_passed;
 		}
-		document.timeform.timetextarea.value = hours_passed + ":" + minutes_passed + ":" + seconds_passed + "." + milliseconds_passed;
+		document.getElementById("chronotime").innerHTML = hours_passed + ":" + minutes_passed + ":" + seconds_passed /*+ "." + milliseconds_passed*/;
 	}
 	timestart = null;
 }
@@ -97,3 +98,13 @@ function toggleChrono( e ) {
         sw_start();
     }
 }
+
+// function toggleSave( e ) {
+// 		if (e.classList.contains("save")) {
+// 				e.classList.remove("save");
+// 				document.getElementById("save").href="https://github.com";
+// 		} else {
+// 				e.classList.add("save");
+// 				document.getElementById("save").href="#";
+// 		}
+// }

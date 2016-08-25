@@ -41,24 +41,20 @@ DEALINGS IN THE SOFTWARE. -->
 </head>
 <!-- Body -->
 <body>
-	<!-- This divs represent both audio screen with in live volume and the recorded file -->
-	<div id="viz">
-		<div id="volume-analyer">
-			<div class="volume" id="higher">higher &nbsp</div>
-			<div class="volume" id="recommanded">recommanded &nbsp</div>
-			<div class="volume" id="lower">lower &nbsp</div>
-			<canvas id="analyser" width="1024" height="500"></canvas>
-		</div>
-		<canvas id="wavedisplay" width="1024" height="500"></canvas>
+	<div id="waiting">
 	</div>
 	<!-- First image is the clickable mic to begin the recording and the second one is saving the last recorded file -->
-	<div id="controls">
-		<img id="record" src="img/mic128.png" onclick="toggleRecording(this), toggleChrono(this);">
-		<form name="timeform">
-		<p style = "font-size:15px">Time: <input type=text name="timetextarea" value="00:00:00" size="10" style = "font-size:15px"></p>
-		</form>
+	<img id="record" src="img/btn_record_inactive.png" onclick="toggleRecording(this), toggleChrono(this);">
+  <p id="recordtime">Recording Time</p>
+  <span id="chronotime">00:00:00</span>
+  <!-- This divs represent both audio screen with in live volume and the recorded file -->
+		<div id="volume-analyer">
+			<canvas id="analyser" width="1024" height="500"></canvas>
+			<img id="analyzerhide" src="img/input_feed.png";>
+		</div>
+		<canvas id="wavedisplay" width="1024" height="500"></canvas>
+  	<p id="inputlevel">Input level</p>
 		<a id="save" href="#"><img src="img/save.svg"></a>
-	</div>
 
 </body>
 </html>
