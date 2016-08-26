@@ -33,10 +33,15 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
-    "grunt-electron-installer": "^2.1.0"
+    "grunt-electron-installer": "^2.1.0",
+    "grunt-serve": "^0.1.6"
   },
   "build": {
     "appId": "AudioRecorder.id",
     "app-category-type": "Audio"
+  },
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "toastr": "^2.1.2"
   }
 }

@@ -61,16 +61,20 @@ function gotBuffers( buffers ) {
 function doneEncoding( blob ) {
     Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
     recIndex++;
+
+    // document.getElementById('save').click();
 }
 
 // This function is used to get the onclick element on the mic image
 function toggleRecording( e ) {
     if (e.classList.contains("recording")) {
         // stop recording
+
         audioRecorder.stop();
         e.classList.remove("recording");
         audioRecorder.getBuffers( gotBuffers );
         document.getElementById("record").src = "/img/btn_record_inactive.png";
+
     } else {
         // start recording
         if (!audioRecorder)
