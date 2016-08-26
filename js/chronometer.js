@@ -91,8 +91,6 @@ function Stop() {
 
 function toggleChrono( e ) {
     if (e.classList.contains("chrono")) {
-        Stop();
-        e.classList.remove("chrono");
     } else {
         e.classList.add("chrono");
         sw_start();

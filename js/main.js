@@ -32,6 +32,7 @@ var canvasWidth, canvasHeight;
 // Current rec number to save the audio file
 var recIndex = 0;
 
+
 /* TODO:
 
 - offer mono option
@@ -70,10 +71,31 @@ function toggleRecording( e ) {
     if (e.classList.contains("recording")) {
         // stop recording
 
-        audioRecorder.stop();
-        e.classList.remove("recording");
-        audioRecorder.getBuffers( gotBuffers );
-        document.getElementById("record").src = "/img/btn_record_inactive.png";
+        //
+        $(document).ready(function() {
+          $('#record').click(function() {
+            toastr.remove();
+            toastr.success("<div>Are you sure you want to stop the recording ?</div><div><button type='button' id='okBtn' class='btn btn-primary' onclick='cancelStop()'>Cancel</button><button type='button' id='surpriseBtn' class='btn' style='margin: 0 8px 0 8px' onclick='validStop()'>Yes</button></div>");
+          });
+          toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": true,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        });
+        //
 
     } else {
         // start recording
@@ -84,6 +106,20 @@ function toggleRecording( e ) {
         audioRecorder.record();
         document.getElementById("record").src = "/img/btn_record_active.png";
     }
+}
+
+function validStop() {
+  var imid = document.getElementById( "record" );
+  audioRecorder.stop();
+  imid.classList.remove("recording");
+  audioRecorder.getBuffers( gotBuffers );
+  document.getElementById("record").src = "/img/btn_record_inactive.png";
+  imid.classList.remove("chrono");
+  Stop();
+}
+
+function cancelStop (){
+  toastr.remove();
 }
 
 // Converting the stereo sound into a mono sound if required
