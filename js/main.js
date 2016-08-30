@@ -70,31 +70,8 @@ function doneEncoding( blob ) {
 function toggleRecording( e ) {
     if (e.classList.contains("recording")) {
         // stop recording
-
-        //
-        $(document).ready(function() {
-          $('#record').click(function() {
             toastr.remove();
             toastr.success("<div>Are you sure you want to stop the recording ?</div><div><button type='button' id='okBtn' class='btn btn-primary' onclick='cancelStop()'>Cancel</button><button type='button' id='surpriseBtn' class='btn' style='margin: 0 8px 0 8px' onclick='validStop()'>Yes</button></div>");
-          });
-          toastr.options = {
-          "closeButton": false,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": true,
-          "positionClass": "toast-top-right",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
-        });
         //
 
     } else {
@@ -275,24 +252,13 @@ function initAudio() {
             //
             $(document).ready(function() {
                 toastr.remove();
-                toastr.error("Error getting audio, please check your microphone's connection or the microphone setting of your current browser.");
-              toastr.options = {
-              "closeButton": false,
-              "debug": false,
-              "newestOnTop": false,
-              "progressBar": true,
-              "positionClass": "toast-top-right",
-              "preventDuplicates": false,
-              "onclick": null,
-              "showDuration": "300",
-              "hideDuration": "1000",
-              "timeOut": "5000",
-              "extendedTimeOut": "1000",
-              "showEasing": "swing",
-              "hideEasing": "linear",
-              "showMethod": "fadeIn",
-              "hideMethod": "fadeOut"
-            }
+                toastr.options = {
+                  "timeOut": 0,
+                  "extendedTimeOut": 0,
+                  "tapToDismiss": false
+                }
+                toastr.options.closeButton = true;
+                toastr.error("Error getting audio, please check your microphone's connection or the microphone setting of your current browser. <div><button type='button' id='surpriseBtn' class='btn' style='margin: 0 8px 0 8px' onclick='initAudio(), toastr.remove()'>Check Again</button></div>");
             });
             //
         });
