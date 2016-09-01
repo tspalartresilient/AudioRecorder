@@ -63,6 +63,7 @@ function doneEncoding( blob ) {
     Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
     recIndex++;
 
+    // Auto save line, comment if you want to test without getting recording save.
     // document.getElementById('save').click();
 }
 
