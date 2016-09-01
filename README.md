@@ -14,6 +14,7 @@ This project is using two existing project under MIT Licence.
 License (MIT)
 
 Copyright © 2013 Matt Diamond
+
 Copyright © 2014 Chris Wilson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -29,5 +30,3 @@ THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRI
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
-
-This project use the Web Audio API
