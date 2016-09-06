@@ -1,29 +1,5 @@
-/*License (MIT)
+// Worker are used to set background task seems to be the function which create the wav based on the record. This part is converting the audio recorded by recorder JS to .wav
 
-Copyright © 2013 Matt Diamond
-Copyright © 2014 Chris Wilson
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
-to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of
-the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-*/
-
-// Worker are used to set background task
-// seems to be the function which create the wav based on the record.
-// This part is converting the audio recorded by recorder JS to .wav
-
-
-// set the var to record to null
 var recLength = 0,
   recBuffersL = [],
   recBuffersR = [],
@@ -53,8 +29,6 @@ this.onmessage = function(e){
   }
 };
 
-
-//
 function init(config){
   sampleRate = config.sampleRate;
 }
@@ -101,7 +75,6 @@ function clear(){
   recBuffersR = [];
 }
 
-//
 function mergeBuffers(recBuffers, recLength){
   var result = new Float32Array(recLength);
   var offset = 0;
@@ -112,7 +85,6 @@ function mergeBuffers(recBuffers, recLength){
   return result;
 }
 
-//
 function interleave(inputL, inputR){
   var length = inputL.length + inputR.length;
   var result = new Float32Array(length);
@@ -128,7 +100,6 @@ function interleave(inputL, inputR){
   return result;
 }
 
-//
 function floatTo16BitPCM(output, offset, input){
   for (var i = 0; i < input.length; i++, offset+=2){
     var s = Math.max(-1, Math.min(1, input[i]));
@@ -136,14 +107,12 @@ function floatTo16BitPCM(output, offset, input){
   }
 }
 
-//
 function writeString(view, offset, string){
   for (var i = 0; i < string.length; i++){
     view.setUint8(offset + i, string.charCodeAt(i));
   }
 }
 
-//
 function encodeWAV(samples, mono){
   var buffer = new ArrayBuffer(44 + samples.length * 2);
   var view = new DataView(buffer);
