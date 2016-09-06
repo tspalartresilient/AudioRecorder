@@ -6,6 +6,7 @@ This project goal was to provide an Html5 app that could record audio in live in
 We used the Html5 Web Audio API and Electron to create this app based on JS/Html and css.
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
 This does not stand as the final app but as a proof of concept about live audio recording.
+To manage autosave just comment or uncomment main-recorder.js auto save function line 40.
 
 ## Licence Information
 

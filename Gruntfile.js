@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'js/main.js',
+        src: 'js/main-recorder.js',
         dest: 'build/main.min.js'
       }
     }

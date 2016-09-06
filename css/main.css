@@ -12,9 +12,6 @@ body {
 }
 #wavedisplay {
   display: none;
-  background: #505050;
-  width: 95%;
-  height: 45%;
 }
 #analyser {
   background: #505050;
@@ -51,21 +48,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-#lower {
-  background-color: gold;
-  color: gold;
-  top: 306px;
-}
-#recommanded {
-  background-color: green;
-  color: green;
-  top: 50%;
-}
-#higher {
-  background-color: red;
-  color: red;
-  top: 25%;
 }
 .volume {
   text-align: right;

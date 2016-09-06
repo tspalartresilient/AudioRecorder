@@ -87,7 +87,6 @@ function Stop() {
 	timestart = null;
 }
 
-
 function toggleChrono( e ) {
     if (e.classList.contains("chrono")) {
     } else {
@@ -95,13 +94,3 @@ function toggleChrono( e ) {
         sw_start();
     }
 }
-
-// function toggleSave( e ) {
-// 		if (e.classList.contains("save")) {
-// 				e.classList.remove("save");
-// 				document.getElementById("save").href="https://github.com";
-// 		} else {
-// 				e.classList.add("save");
-// 				document.getElementById("save").href="#";
-// 		}
-// }

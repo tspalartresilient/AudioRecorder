@@ -1,10 +1,8 @@
 // Call the Audio API of Html5
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-// Definition of all the var needed
 // Define audioContext as a new object based on the API Object
 var audioContext = new AudioContext();
-// Set all it's value to null
 var audioInput = null,
     realAudioInput = null,
     inputPoint = null,
@@ -14,14 +12,6 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 // Current rec number to save the audio file
 var recIndex = 0;
-
-
-/* TODO:
-
-- offer mono option
-- "Monitor input" switch
-*/
-
 
 // function which save the recording when clicking the second button
 function saveAudio() {
@@ -56,8 +46,6 @@ function toggleRecording( e ) {
         // stop recording
             toastr.remove();
             toastr.success("<div>Are you sure you want to stop the recording ?</div><div><button type='button' id='okBtn' class='btn btn-primary' onclick='cancelStop()'>Cancel</button><button type='button' id='surpriseBtn' class='btn' style='margin: 0 8px 0 8px' onclick='validStop()'>Yes</button></div>");
-        //
-
     } else {
         // start recording
         if (!audioRecorder)
@@ -90,14 +78,12 @@ function cancelStop (){
 function convertToMono( input ) {
     var splitter = audioContext.createChannelSplitter(2);
     var merger = audioContext.createChannelMerger(2);
-
     input.connect( splitter );
     splitter.connect( merger, 0, 0 );
     splitter.connect( merger, 0, 1 );
     return merger;
 }
 
-// Not find yet
 function cancelAnalyserUpdates() {
     window.cancelAnimationFrame( rafID );
     rafID = null;
@@ -111,35 +97,19 @@ function updateAnalysers(time) {
         canvasHeight = canvas.height;
         analyserContext = canvas.getContext('2d');
     }
-
-    // analyzer draw code here
+    // Analyzer draw code here
     {
         var SPACING = 3;
         var BAR_WIDTH = 2;
         var numBars = 1;
         var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
-
         analyserNode.getByteFrequencyData(freqByteData);
-
         analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
         analyserContext.fillStyle = '#F6D565';
         analyserContext.lineCap = 'round';
         var multiplier = analyserNode.frequencyBinCount / numBars;
         var maxDecibels = analyserNode.maxDecibels;
         var minDecibels = analyserNode.minDecibels;
-
-        // // Draw rectangle for each frequency bin.
-        // for (var i = 0; i < numBars; ++i) {
-        //     var magnitude = 0;
-        //     var offset = Math.floor( i * multiplier );
-        //     // gotta sum/average the block, or we miss narrow-bandwidth spikes
-        //     for (var j = 0; j< multiplier; j++)
-        //         magnitude += freqByteData[offset + j];
-        //     magnitude = magnitude / multiplier;
-        //     var magnitude2 = freqByteData[i * multiplier];
-        //     analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
-        //     analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
-        // }
 
         // Draw a left to right rectangle to show average audio volume.
         for (var i = 0; i < numBars; ++i) {
@@ -153,26 +123,7 @@ function updateAnalysers(time) {
             analyserContext.fillStyle = "hsl( " + 115 + ", 100%, 100%)";
             analyserContext.fillRect(0, 0, magnitude, canvasHeight);
         }
-
-        // // Draw a rectangle for the average frequency.
-        // for (var i = 0; i < numBars; ++i) {
-        //     var magnitudemoy = 0;
-        //     var magnitude = 0;
-        //     var offset = Math.floor( i * multiplier );
-        //     // gotta sum/average the block, or we miss narrow-bandwidth spikes
-        //     for (var j = 0; j< multiplier; j++) {
-        //         magnitude += freqByteData[j];
-        //         magnitude = magnitude / multiplier;
-        //           for (var i = 0; i < numBars; ++i) {
-        //             magnitudemoy += magnitude / numBars;
-        //           }
-        //     }
-        //     // var magnitude2 = freqByteData[i * multiplier];
-        //     analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
-        //     analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitudemoy);
-        // }
     }
-
     rafID = window.requestAnimationFrame( updateAnalysers );
 }
 
@@ -198,7 +149,7 @@ function gotStream(stream) {
     audioInput = realAudioInput;
     audioInput.connect(inputPoint);
 
-//    audioInput = convertToMono( input );
+//  audioInput = convertToMono( input );
 
     analyserNode = audioContext.createAnalyser();
     analyserNode.fftSize = 2048;
