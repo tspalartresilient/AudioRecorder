@@ -86,6 +86,7 @@ function toggleRecording( e ) {
     }
 }
 
+// Validation button function for the stop recording toastr
 function validStop() {
   var imid = document.getElementById( "record" );
   audioRecorder.stop();
@@ -94,8 +95,10 @@ function validStop() {
   document.getElementById("record").src = "/img/btn_record_inactive.png";
   imid.classList.remove("chrono");
   Stop();
+  toastr.remove();
 }
 
+// Cancel button function for the stop recording toastr
 function cancelStop (){
   toastr.remove();
 }
@@ -257,7 +260,7 @@ function initAudio() {
                   "timeOut": 0,
                   "extendedTimeOut": 0,
                   "tapToDismiss": false
-                }
+                };
                 toastr.options.closeButton = true;
                 toastr.error("Error getting audio, please check your microphone's connection or the microphone setting of your current browser. <div><button type='button' id='surpriseBtn' class='btn' style='margin: 0 8px 0 8px' onclick='initAudio(), toastr.remove()'>Check Again</button></div>");
             });

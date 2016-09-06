@@ -1,5 +1,5 @@
 var timercount = 0;
-var timestart  = null;
+var timestart = null;
 
 function showtimer() {
 	if(timercount) {
@@ -25,15 +25,14 @@ function showtimer() {
 		seconds_passed = "0" + seconds_passed;
 	}
 	document.getElementById("chronotime").innerHTML = hours_passed + ":" + minutes_passed + ":" + seconds_passed;
-
-	timercount = setTimeout("showtimer()", 1000);
+	timercount = setTimeout(showtimer, 1000);
 }
 
 function sw_start(){
 	if(!timercount){
 	timestart   = new Date();
 	document.getElementById("chronotime").innerHTML = "00:00:00";
-	timercount  = setTimeout("showtimer()", 1000);
+	timercount = setTimeout(showtimer, 1000);
 	}
 	else{
 	var timeend = new Date();

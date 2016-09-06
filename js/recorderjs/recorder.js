@@ -54,7 +54,7 @@ DEALINGS IN THE SOFTWARE.
           e.inputBuffer.getChannelData(1)
         ]
       });
-    }
+    };
 
     this.configure = function(cfg){
       for (var prop in cfg){
@@ -62,24 +62,24 @@ DEALINGS IN THE SOFTWARE.
           config[prop] = cfg[prop];
         }
       }
-    }
+    };
 
     this.record = function(){
       recording = true;
-    }
+    };
 
     this.stop = function(){
       recording = false;
-    }
+    };
 
     this.clear = function(){
       worker.postMessage({ command: 'clear' });
-    }
+    };
 
     this.getBuffers = function(cb) {
       currCallback = cb || config.callback;
-      worker.postMessage({ command: 'getBuffers' })
-    }
+      worker.postMessage({ command: 'getBuffers' });
+    };
 
     this.exportWAV = function(cb, type){
       currCallback = cb || config.callback;
@@ -89,7 +89,7 @@ DEALINGS IN THE SOFTWARE.
         command: 'exportWAV',
         type: type
       });
-    }
+    };
 
     this.exportMonoWAV = function(cb, type){
       currCallback = cb || config.callback;
@@ -99,12 +99,12 @@ DEALINGS IN THE SOFTWARE.
         command: 'exportMonoWAV',
         type: type
       });
-    }
+    };
 
     worker.onmessage = function(e){
       var blob = e.data;
       currCallback(blob);
-    }
+    };
 
     source.connect(this.node);
     this.node.connect(this.context.destination);   // if the script node is not connected to an output the "onaudioprocess" event is not triggered in chrome.
@@ -115,7 +115,7 @@ DEALINGS IN THE SOFTWARE.
     var link = document.getElementById("save");
     link.href = url;
     link.download = filename || 'output.wav';
-  }
+  };
 
   window.Recorder = Recorder;
 
