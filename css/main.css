@@ -34,9 +34,6 @@ body {
   width: 100%;
 }
 #record { height: 10vh; width:10vh; margin: 0 auto 0 auto;}
-#record.recording {
-  background-image:"img/btn_record_inactive.png";
-}
 #save, #save img { height: 3vh;width:3vh; margin: 0 auto 0 auto; display: none;}
 #save { opacity: 0.25;}
 #save[download] { opacity: 1;}
